@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+    --fsize-link: 14px;
+    --fsize-mid: 16px;
+    --fsize-big: 24px;
+
+    --fw300: 300;
+    --fw400: 400;
+    --fw500: 500;
+    --fw600: 600;
+    --fw700: 700;
+    --fw800: 800;
+
+    --f-family: 'Open Sans', sans-serif;
+
+}
