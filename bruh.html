@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/index.css" />
+    <script
+      src="https://kit.fontawesome.com/0995f9dee8.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Document</title>
   </head>
   <body>
@@ -863,7 +867,27 @@
         </nav>
         <nav class="desk-nav__user">
           <div class="desk-nav__input">
-            <input type="text" class="search" />
+            <input type="text" id = "searchId" class="search" placeholder = "Search">
+              <i class="fas fa-search">
+              </i>
+            </input>
+          </div>
+          <div class="search-expand">
+            <div class="search-expand__container">
+              <div class="search-expand__text-wrapper">
+                <h3>Popular Search Terms</h3>
+                <li><a href = "#">Air Force 1</a></li>
+                <li><a href = "#">Jordan</a></li>
+                <li><a href = "#">Air Max</a></li>
+                <li><a href = "#">Blazer</a></li>
+                <li><a href = "#">Shorts</a></li>
+              </div>
+            </div>
+          </div>
+          <div class="hamburger">
+            <div class="hamburger__line1"></div>
+            <div class="hamburger__line2"></div>
+            <div class="hamburger__line3"></div>
           </div>
         </nav>
       </div>

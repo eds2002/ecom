@@ -5,6 +5,7 @@
 /* Header section */
 body{
     font-family:var(--f-family);
+    overflow-x:hidden;
 }
 
 .header{
@@ -151,56 +152,143 @@ flex:1;
 }
 
 
-.search{
-    padding:10px 20px;
-    border-radius:500px;
-    border:1px solid black;
-    outline:none;
-}
 
 .desk-nav__user{
     flex:1;
     height:100%;
     display:flex;
-    justify-content:flex-end;
+    justify-content:center;
     align-items:center;
-    transition: 1s ease;
-    background:green;
 }
 
+.desk-nav__user:focus-within .desk-nav__input{
+    left:50%;
+    transform:translate(-50%,0%);
+}
 
-.desk-nav__user:focus-within{
-    background:red;
-    position:absolute;
-    width:100%;
-    transition: 1s ease;
+.desk-nav__user:focus-within .search{
+    max-width:500px;
+    min-width:200px;
+    width:70vw;
 }
 
 .desk-nav__input{
-    transition:1s ease;
-    width:100%;
-    background:blue;
+    transition: 0.2s var(--easeoutquint);
+    height:100%;
     display:flex;
     align-items:center;
-    justify-content:flex-end;
+    justify-content:flex-start;
+    position:absolute;
+    left:67%;
+    padding:0px 50px;
+    background:white;
 }
 
 .search{
-    position:relative;
-    right:1;
-    left:0;
-    margin:auto;
-    width:150px;
-    transition: 0.2s ease;
+padding:12px 50px;
+background:rgb(216, 216, 216);
+border-radius:500px;
+width:125px;
+transition: width 0.1s var(--easeoutquint);
+border:none;
+outline:none;
 }
 
-.search:focus{
-    position:relative;
+.search::placeholder{
+    font-size:var(--fsize-mid);
+}
+
+.desk-nav__input-label p{
+    position:absolute;
+    padding:50px;
+    border-radius:500px;
+    cursor:pointer;
+    text-align:center;
+    padding:50px;
+    font-size:50px;
+}
+
+
+.fa-search{
+    position:absolute;
+    padding:10px;
+    border-radius:500px;
+    background:rgb(216, 216, 216);
+    z-index:999;
+    cursor:pointer;
+    pointer-events:none;
+}
+
+.fa-search:hover{
+    background:rgb(189, 189, 189);
+    pointer-events:none;
+}
+
+.fa-search:active{
+    pointer-events:none;
+}
+
+
+
+
+/* Expansion on active search bar */
+
+.search-expand{
+    position:absolute;
     left:0;
     right:0;
-    margin: auto;
-    transition: 1s ease;
+    top:75px;
+    width:100%;
+    height:0px;
+    z-index:-999;
+    transition: 0.2s var(--easeoutquint);
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
+
+.search-expand__container{
+    width:600px;
+    height:100%;
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+}
+
+.search-expand__text-wrapper h3{
+    font-size:var(--fsize-mid);
+    font-weight:var(--fw600);
+}
+
+.search-expand__text-wrapper li {
+    list-style-type:none;
+    margin:7px 0px;
+    cursor:pointer;
+}
+
+.search-expand__text-wrapper li:first-of-type{
+    margin-top:20px;
+}
+
+.search-expand__text-wrapper{
+    transform:translateY(20px);
+    opacity:0;
+}
+
+.desk-nav__user:focus-within .search-expand__text-wrapper{
+    transform:translateY(0px);
+    opacity:1;
+    transition:all 0.5s ease;
+    transition-delay:0.3s;
+    transition-property:transform,opacity;
+    padding:0px 20px;
+}
+
+.desk-nav__user:focus-within  .search-expand{
+    height:250px;
+    overflow:hidden;
+}
+
 
 
 @media only screen and (max-width: 1145px) {
@@ -213,4 +301,57 @@ flex:1;
     .link__item-kids{
         display:none;
     }
- }
+}
+
+.desk-nav__input-label{
+    display:none;
+}
+
+
+
+/* Nav mobile responsiveness */
+
+
+@media only screen and (max-width: 840px) {
+
+    .desk-nav{
+        display:none;
+    }
+
+    .search{
+        padding:12px 19px;
+        background:rgb(216, 216, 216);
+        border-radius:500px;
+        width:0;
+        transition: width 0.1s var(--easeoutquint);
+        border:none;
+        outline:none;
+    }
+
+    .search:focus:placeholder-shown{
+        padding:12px 50px;
+    }
+
+    .desk-nav__user:focus-within .hamburger{
+        display:none;
+    }
+
+    .hamburger{
+        padding:10px;
+        position:absolute;
+        right:20px;
+    }
+
+    .hamburger__line1,
+    .hamburger__line2,
+    .hamburger__line3{
+        width:23px;
+        height:4px;
+        background:black;
+        border-radius:500px;
+    }
+    
+    .hamburger__line2{
+        margin:3px 0px;
+    }
+}

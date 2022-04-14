@@ -14,4 +14,6 @@
 
     --f-family: 'Open Sans', sans-serif;
 
+    --easeoutquint: cubic-bezier(0.83, 0, 0.17, 1);
+
 }
