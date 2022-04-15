@@ -58,12 +58,13 @@ flex:1;
     display:flex;
     justify-content:center;
     align-items:flex-start;
-    transform:translateY(-150%);
-    transition: transform 0.2s cubic-bezier(0.76, 0, 0.24, 1);
+    transform:translateY(-100%);
+    transition: transform 0.45s cubic-bezier(0.76, 0, 0.24, 1);
     transition-delay: 0.1s;
     transition-property: transform;
     z-index:-999;
     gap:50px;
+    background:white;
 }
 
 .link__new-releases-container:hover,
@@ -81,7 +82,7 @@ flex:1;
 .link__item-kids:hover ~ .link__kids-container,
 .link__item-sale:hover ~ .link__sales-container
 {
-    transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+    transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
     transform:translateY(0);
 }
 
@@ -167,13 +168,13 @@ flex:1;
 }
 
 .desk-nav__user:focus-within .search{
+    transition:width 0.3s var(--easeinquart);
     max-width:500px;
-    min-width:200px;
     width:70vw;
 }
 
 .desk-nav__input{
-    transition: 0.2s var(--easeoutquint);
+    transition: 0.3s var(--easeoutquint);
     height:100%;
     display:flex;
     align-items:center;
@@ -189,7 +190,8 @@ padding:12px 50px;
 background:rgb(216, 216, 216);
 border-radius:500px;
 width:125px;
-transition: width 0.1s var(--easeoutquint);
+transition:width 0.3s var(--easeoutquart);
+max-width:500px;
 border:none;
 outline:none;
 }
@@ -309,9 +311,11 @@ outline:none;
 
 
 
+
+.mob-nav{
+    display:none;
+}
 /* Nav mobile responsiveness */
-
-
 @media only screen and (max-width: 840px) {
 
     .desk-nav{
@@ -340,6 +344,7 @@ outline:none;
         padding:10px;
         position:absolute;
         right:20px;
+        cursor:pointer;
     }
 
     .hamburger__line1,
@@ -354,4 +359,399 @@ outline:none;
     .hamburger__line2{
         margin:3px 0px;
     }
+
+    .mob-nav{
+        position:fixed;
+        top:0;
+        right:0;
+        width:100vw;
+        height:100vh;
+        display:flex;
+        justify-content:flex-end;
+        z-index:9999;
+        background:rgba(44, 29, 29, 0.294);
+        opacity:0;
+        pointer-events: none;
+    }
+
+    .mob-nav.active{
+        pointer-events: all;
+        opacity:1;
+    }
+
+
+    .mob-nav-container{
+        background:rgb(255, 255, 255);
+        width:50vw;
+        height:100vh;
+        z-index:99999;
+        padding:0px 20px;
+        position: relative;
+        transform:translateX(100%);
+    }
+
+    .mob-nav.active .mob-nav-container{
+        transform:translateX(0%);
+    }
+
+    .mob-nav-container__close{
+        display:flex;
+        justify-content:flex-end;
+    }
+
+    .mobile-link,
+    .mob-nav-container__affiliates
+    {
+        list-style-type:none;
+    }
+
+    .mobile-link{
+        font-size:var(--fsize-big);
+        font-weight:var(--fw600);
+        margin:20px 0px;
+        cursor:pointer;
+        display:flex;
+        justify-content:space-between;
+    }
+
+    .mob-nav-container__affiliates{
+        font-size:var(--fsize-mid);
+        font-weight:var(--fw500);
+        margin:10px 0px;
+    }
+
+    .mob-nav-container__member-text{
+        margin-top:100px;
+        font-size:var(--fsize-big);
+    }
+
+    .mob-nav-btn-wrapper{
+        margin:20px 0px;
+    }
+
+    .join-btn{
+        padding:5px 15px;
+        border-radius:500px;
+        background:black;
+        color:white;
+        outline:none;
+        border:none;
+        font-size:var(--fsize-mid);
+    }
+    .join-btn:hover{
+        background:hsla(360,0%,40%,1);
+    }
+    .sign-in{
+        background:none;
+        border:2px solid gray;
+        border-radius:500px;
+        padding:5px 15px;
+        font-size:var(--fsize-mid);
+    }
+    .sign-in:hover{
+        border:2px solid hsla(360,0%,0%,1);
+    }
+
+    .mob-nav-container-bag,
+    .mob-nav-container-orders,
+    .mob-nav-container-help
+    {
+        display:block;
+    }
+
+    /* Mobile link sub links */
+    /* New releases sub nav  */
+    .nav-releases,
+    .mens,
+    .womens,
+    .kids,
+    .sale
+    {
+        position:absolute;
+        width:100%;
+        height:100%;
+        background:rgb(255, 255, 255);
+        top:0;
+        left:0;
+        padding:100px 30px; 
+        transform:translateX(100%);
+        transition:0.3s var(--easeoutquint);
+    }
+
+    .nav-releases.active,
+    .mens.active,
+    .womens.active,
+    .kids.active,
+    .sale.active
+    {
+        transform:TranslateX(0%);
+    }
+
+
+    /* Nav Releases container */
+    .nav-releases__title,
+    .mob-men-container__title,
+    .mob-women-container__title,
+    .mob-kids-container__title,
+
+    /* Mens Container */
+    .mob-newfeatured-container__title,
+
+    /* Womens container */
+    .mob-women-newfeatured-container__title
+
+    /* Kids container */
+    .kids__title,
+    .mob-kids-newfeatured-container__title,
+    .mob-kids-bigkids-container__title,
+    .mob-kids-littlekids-container__title,
+    .mob-kids-toddlers-container__title,
+    .mob-kids-accessories-container__title,
+
+    /* Sale container */
+    .sale__title
+    {
+        font-size:var(--fsize-big);
+        margin:25px 0px;
+        color:black;
+    }
+
+    /* Nav Releases Container */
+    .nav-releases__crumb,
+    .mob-men-container__crumb,
+    .mob-women-container__crumb,
+    .mob-kids-container__crumb,
+
+    /* Mens Container */
+    .mob-newfeatured-container__crumb,
+    .mens__crumb,
+
+    /* Womens Container */
+    .mob-women-newfeatured-container__crumb,
+    .womens__crumb,
+
+    /* Kids Container */
+    .kids__crumb,
+    .mob-kids-newfeatured-container__crumb,
+    .mob-kids-bigkids-container__crumb,
+    .mob-kids-littlekids-container__crumb,
+    .mob-kids-toddlers-container__crumb,
+    .mob-kids-accessories-container__crumb,
+    /* Sales Container */
+    .sale__crumb
+    {
+        font-size:var(--fsize-link);
+        margin-bottom:50px;
+        cursor:pointer;
+    }
+
+    /* Nav Releases Container */
+    .nav-releases__link,
+    .mob-men-container__link,
+    .mob-women-container__link,
+    .mob-kids-container__link,
+
+    /* Mens container */
+    .mob-newfeatured-container__link,
+    .mens__link,
+
+    /* Womens Container */
+    .mob-women-newfeatured-container__link,
+    .womens__link,
+
+    /* Kids container */
+    .kids__link,
+    .mob-kids-newfeatured-container__link,
+    .mob-kids-bigkids-container__link,
+    .mob-kids-littlekids-container__link,
+    .mob-kids-toddlers-container__link,
+    .mob-kids-accessories-container__link,
+
+    /* Sale Container */
+    .sale__link
+    {
+        font-size:var(--fsize-mid);
+        margin:20px 0px;
+        color:hsla(360,0%,30%,1);
+        cursor:pointer;
+    }
+
+    /* New releases > New for Men */
+    .mob-men-container{
+        position:absolute;
+        width:100%;
+        height:100%;
+        background:rgb(255, 255, 255);
+        top:0;
+        left:0;
+        padding:100px 30px;
+        cursor:default;
+        transform:translateX(100%);
+        transition:0.3s var(--easeoutquint);
+    }
+
+    .mob-men-container.active{
+        transform:translateX(0%);
+    }
+
+
+    /* New releases > New for Women */
+    .mob-women-container{
+        position:absolute;
+        width:100%;
+        height:100%;
+        background:rgb(255, 255, 255);
+        top:0;
+        left:0;
+        padding:100px 30px;
+        cursor:default;
+        transform:translateX(100%);
+        transition:0.3s var(--easeoutquint);
+    }
+
+    .mob-women-container.active{
+        transform:translateX(0%);
+    }
+
+    /* New releases > New for kids */
+    .mob-kids-container{
+        position:absolute;
+        width:100%;
+        height:100%;
+        background:rgb(255, 255, 255);
+        top:0;
+        left:0;
+        padding:100px 30px;
+        opacity:1;
+        cursor:default;
+        transform:translateX(100%);
+        transition:0.3s var(--easeoutquint);
+    }
+
+    .mob-kids-container.active{
+        transform:translateX(0%);
+    }
+
+    /* Mens > New & Featured */
+
+    .mob-newfeatured-container{
+        position:absolute;
+        width:100%;
+        height:100%;
+        background:rgb(255, 255, 255);
+        top:0;
+        left:0;
+        padding:100px 30px;
+        cursor:default;
+        transform:translateX(100%);
+        transition:0.3s var(--easeoutquint);
+    }
+    .mob-newfeatured-container.active{
+        transform:translateX(0%);
+    }
+
+    /* Womens > New & Featured */
+
+    .mob-women-newfeatured-container{
+        position:absolute;
+        width:100%;
+        height:100%;
+        background:rgb(255, 255, 255);
+        top:0;
+        left:0;
+        padding:100px 30px;
+        cursor:default;
+        transform:translateX(100%);
+        transition:0.3s var(--easeoutquint);
+    }
+    .mob-women-newfeatured-container.active{
+        transform:translateX(0%);
+    }
+
+    /* Kids > New & Featured */
+    .mob-kids-newfeatured-container{
+        position:absolute;
+        width:100%;
+        height:100%;
+        background:rgb(255, 255, 255);
+        top:0;
+        left:0;
+        padding:100px 30px;
+        cursor:default;
+        transform:translateX(100%);
+        transition:0.3s var(--easeoutquint);
+    }
+    .mob-kids-newfeatured-container.active{
+        transform:translateX(0%);
+    }
+
+    /* Kids > Big Kids */
+    .mob-kids-bigkids-container{
+        position:absolute;
+        width:100%;
+        height:100%;
+        background:rgb(255, 255, 255);
+        top:0;
+        left:0;
+        padding:100px 30px;
+        cursor:default;
+        transform:translateX(100%);
+        transition:0.3s var(--easeoutquint);
+    }
+    .mob-kids-bigkids-container.active{
+        transform:translateX(0%);
+    }
+
+    /* Kids > Little Kids */
+    .mob-kids-littlekids-container{
+        position:absolute;
+        width:100%;
+        height:100%;
+        background:rgb(255, 255, 255);
+        top:0;
+        left:0;
+        padding:100px 30px;
+        cursor:default;
+        transform:translateX(100%);
+        transition:0.3s var(--easeoutquint);
+    }
+    .mob-kids-littlekids-container.active{
+        transform:translateX(0%);
+    }
+
+    /* Kids > New & Featured */
+    .mob-kids-toddlers-container{
+        position:absolute;
+        width:100%;
+        height:100%;
+        background:rgb(255, 255, 255);
+        top:0;
+        left:0;
+        padding:100px 30px;
+        cursor:default;
+        transform:translateX(100%);
+        transition:0.3s var(--easeoutquint);
+    }
+    .mob-kids-toddlers-container.active{
+        transform:translateX(0%);
+    }
+
+    /* Kids > New & Featured */
+    .mob-kids-accessories-container{
+        position:absolute;
+        width:100%;
+        height:100%;
+        background:rgb(255, 255, 255);
+        top:0;
+        left:0;
+        padding:100px 30px;
+        cursor:default;
+        transform:translateX(100%);
+        transition:0.3s var(--easeoutquint);
+    }
+    .mob-kids-accessories-container.active{
+        transform:translateX(0%);
+    }
+
 }
+
